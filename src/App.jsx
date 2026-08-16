@@ -83,6 +83,40 @@ function ManifestoStory() {
         scrollTrigger: { trigger: story, start: 'top top', end: '+=260%', scrub: true },
       })
     })
+    media.add('(max-width: 720px)', () => {
+      const steps = gsap.utils.toArray('.story-step-inner', story)
+      const progress = story.querySelector('.story-progress span')
+      const ornament = story.querySelector('.story-ornament')
+
+      gsap.set(steps, { autoAlpha: 0, y: 30 })
+      gsap.set(progress, { scaleY: 0 })
+
+      steps.forEach((step) => {
+        gsap.to(step, {
+          autoAlpha: 1,
+          y: 0,
+          duration: .82,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: step,
+            start: 'top 84%',
+            toggleActions: 'play none none reverse',
+          },
+        })
+      })
+
+      gsap.to(progress, {
+        scaleY: 1,
+        ease: 'none',
+        scrollTrigger: { trigger: story, start: 'top 72%', end: 'bottom 56%', scrub: true },
+      })
+      gsap.to(ornament, {
+        yPercent: -7,
+        rotate: 6,
+        ease: 'none',
+        scrollTrigger: { trigger: story, start: 'top bottom', end: 'bottom top', scrub: true },
+      })
+    })
     return () => media.revert()
   }, [reducedMotion])
 
@@ -92,9 +126,9 @@ function ManifestoStory() {
     <div className="story-counter" aria-hidden="true">01 / 03</div>
     <svg className="story-ornament" aria-hidden="true" viewBox="0 0 300 640" fill="none"><path d="M55 628c59-140 69-284 49-427C94 129 53 65 0 18m103 183c75-19 136-54 181-108M91 299c75-16 145 5 209 58M78 401c78 6 147 51 190 119M47 512c38-8 93 7 145 42" /><path d="M95 162c-36 23-54 56-55 100M105 234c39-30 64-67 74-111M94 340c-44 20-69 52-76 94M95 448c40 12 72 35 95 68" /></svg>
     <div className="story-stage">
-      <article className="story-step story-title"><span>01 — Manifesto</span><h2>A experiência começa antes do <em>primeiro contato.</em></h2></article>
-      <article className="story-step story-sensory"><span>02 — Atmosfera</span><p>Começa na luz que recebe.<br />No som que envolve.<br /><em>No aroma que permanece.</em></p></article>
-      <article className="story-step story-sensory story-last"><span>03 — Presença</span><p>Na textura que convida.<br /><em>No gesto que acolhe.</em></p></article>
+      <article className="story-step story-title"><div className="story-step-inner"><span>01 — Manifesto</span><h2>A experiência começa antes do <em>primeiro contato.</em></h2></div></article>
+      <article className="story-step story-sensory"><div className="story-step-inner"><span>02 — Atmosfera</span><p>Começa na luz que recebe.<br />No som que envolve.<br /><em>No aroma que permanece.</em></p></div></article>
+      <article className="story-step story-sensory story-last"><div className="story-step-inner"><span>03 — Presença</span><p>Na textura que convida.<br /><em>No gesto que acolhe.</em></p></div></article>
     </div>
   </section>
 }
@@ -296,12 +330,12 @@ function App() {
     <ManifestoStory />
 
     <section className="manifesto section-dark" aria-label="Continuação do manifesto">
-      <Reveal className="manifesto-body">
-        <p>Um lugar não é feito apenas de paredes, móveis ou objetos. É feito de ritmo. De presença. De cuidado. De pequenas decisões que, juntas, dizem ao cliente como ele deve se sentir.</p>
-        <p>Acreditamos que o uniforme também é arquitetura. Que uma música pode conduzir uma jornada. Que um aroma pode construir uma memória. Que a forma de cumprimentar alguém revela tanto sobre uma marca quanto seu logotipo.</p>
-      </Reveal>
-      <Reveal className="manifesto-quote"><p>O espaço conversa com o serviço.<br />O serviço conversa com a linguagem.<br />A linguagem conversa com o comportamento.</p><strong>Tudo precisa fazer sentido.</strong></Reveal>
-      <Reveal className="manifesto-ending"><p>Criamos ambientes que têm personalidade. Serviços que têm intenção. Rituais que parecem naturais. Marcas que são percebidas antes de serem explicadas.</p><p>Porque sofisticação não está no excesso.</p><h3>Está na coerência.</h3><p>E quando tudo conversa, o cliente não apenas visita um espaço. <em>Ele entra em um universo.</em></p></Reveal>
+      <div className="manifesto-body">
+        <Reveal><p>Um lugar não é feito apenas de paredes, móveis ou objetos. É feito de ritmo. De presença. De cuidado. De pequenas decisões que, juntas, dizem ao cliente como ele deve se sentir.</p></Reveal>
+        <Reveal delay={.08}><p>Acreditamos que o uniforme também é arquitetura. Que uma música pode conduzir uma jornada. Que um aroma pode construir uma memória. Que a forma de cumprimentar alguém revela tanto sobre uma marca quanto seu logotipo.</p></Reveal>
+      </div>
+      <div className="manifesto-quote"><Reveal><p>O espaço conversa com o serviço.<br />O serviço conversa com a linguagem.<br />A linguagem conversa com o comportamento.</p></Reveal><Reveal delay={.08}><strong>Tudo precisa fazer sentido.</strong></Reveal></div>
+      <div className="manifesto-ending"><Reveal><p>Criamos ambientes que têm personalidade. Serviços que têm intenção. Rituais que parecem naturais. Marcas que são percebidas antes de serem explicadas.</p></Reveal><Reveal delay={.06}><p>Porque sofisticação não está no excesso.</p></Reveal><Reveal delay={.12}><h3>Está na coerência.</h3></Reveal><Reveal delay={.18}><p>E quando tudo conversa, o cliente não apenas visita um espaço. <em>Ele entra em um universo.</em></p></Reveal></div>
     </section>
 
     <section className="feelings section-light">

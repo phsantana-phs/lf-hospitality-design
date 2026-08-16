@@ -99,6 +99,8 @@ section { padding-block:clamp(64px,8vw,112px) }
 .keywords-heading { margin-bottom:clamp(42px,5vw,68px) }
 .footer-message p { max-width:300px; margin:12px 0 0; color:rgba(241,237,228,.66); font:450 15px/1.6 var(--body) }
 .footer-message > span { display:block; margin-top:10px; color:rgba(241,237,228,.58); font:500 9px var(--mono); letter-spacing:.11em; text-transform:uppercase }
+.manifesto-body .reveal + .reveal { margin-top:36px }
+.manifesto-ending .reveal + .reveal { margin-top:32px }
 
 @media (max-width:720px) {
   section { padding-block:64px }
@@ -106,6 +108,8 @@ section { padding-block:clamp(64px,8vw,112px) }
   .manifesto-story { padding:90px 24px 72px }
   .story-stage { gap:60px }
   .manifesto-body p + p { margin-top:28px }
+  .manifesto-body .reveal + .reveal { margin-top:28px }
+  .manifesto-ending .reveal + .reveal { margin-top:28px }
   .manifesto-quote { margin:72px 0 }
   .manifesto-ending p + p { margin-top:28px }
   .feelings-list { margin-top:60px }
