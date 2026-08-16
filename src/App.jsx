@@ -198,7 +198,6 @@ function ScrollZoomHero() {
         <img src={heroImage} alt="Mão preparando uma mesa com linho em ambiente de hospitalidade" />
       </motion.div>
       <motion.div className="hero-copy" style={reducedMotion ? {} : { y: contentY, opacity: contentOpacity }}>
-        <p className="eyebrow">LF Hospitality Design</p>
         <h1>Tudo<br /><em>conversa.</em></h1>
         <p className="hero-intro">Espaço, serviço, presença e sentidos. Uma abordagem para lugares que desejam ser percebidos por inteiro.</p>
         <motion.a className="scroll-cue" href="#manifesto" aria-label="Conheça o manifesto" whileHover={{ x: 5 }} whileTap={{ scale: .98 }}><span>Desça para sentir</span><ArrowDownRight size={19} strokeWidth={1.4} /></motion.a>
